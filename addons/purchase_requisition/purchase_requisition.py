@@ -469,7 +469,7 @@ class purchase_order_line(osv.osv):
         super(purchase_order_line, self).action_confirm(cr, uid, ids, context=context)
         for element in self.browse(cr, uid, ids, context=context):
             if not element.quantity_bid:
-                self.write(cr, uid, ids, {'quantity_bid': element.product_qty}, context=context)
+                self.write(cr, uid, [element.id], {'quantity_bid': element.product_qty}, context=context)
         return True
 
     def generate_po(self, cr, uid, active_id, context=None):
